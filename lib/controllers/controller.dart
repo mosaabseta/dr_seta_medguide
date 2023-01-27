@@ -45,7 +45,7 @@ class Controller extends GetxController {
   addDosage() async {
     Map<String, dynamic> dosageData = {
       "classification": dosageClassification.value,
-      "amount": double.parse(dosage.text),
+      "amount": dosage.text,
       "first_dosage_comment": firstDosageNote.text,
       "suffix": suffix.text,
       "route": route.text,
@@ -57,6 +57,13 @@ class Controller extends GetxController {
       "time_of_first_dose_in_minutes": int.parse(firstDosageInMinutes.text)
     };
     dosageList.add(dosageData);
+    listOfDosage = Dosage.fromSnapshot(dosageList);
+  }
+  removeDosage(Dosage dosageDataForRemove) async {
+    Map<String,dynamic> data = Dosage.toSingelMap(dosageDataForRemove);
+print(data);
+    dosageList.remove(data);
+
     listOfDosage = Dosage.fromSnapshot(dosageList);
   }
 

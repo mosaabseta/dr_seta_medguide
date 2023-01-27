@@ -136,6 +136,12 @@ class _NewGuidelineState extends State<NewGuideline> {
                 itemBuilder: (context,index){
               return Card(
                 child: ListTile(
+                  onLongPress: (){
+controller.removeDosage(controller.listOfDosage[index]);
+setState(() {
+
+});
+                  },
 
                   leading: Text
                     (controller.listOfDosage[index].line.toString()),

@@ -71,7 +71,7 @@ class GuidelineCard extends StatelessWidget {
                         Align(
                             alignment: Alignment.center,
                             child:  Text("(${data.dosage[index].firstDosageComment})")),
-                        Text("Time interval: every ${data.dosage[index].timeOfRedosingInMinutes/60.toInt()} hrs",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
+                        if (data.dosage[index].timeOfRedosingInMinutes > 0.0)   Text("Time interval: every ${data.dosage[index].timeOfRedosingInMinutes/60.toInt()} hrs",style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
                         Align(
                             alignment: Alignment.center,
                             child:  Text("Note: ${data.dosage[index].comment}",style: TextStyle(fontSize: 16,fontWeight: FontWeight.normal))),

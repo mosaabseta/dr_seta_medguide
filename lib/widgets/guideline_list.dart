@@ -67,7 +67,7 @@ class GuidelineList extends StatelessWidget {
                                     text: " ${data.dosage[index].firstDosageComment}",style: TextStyle(color: Colors.black))
 
                               ])),
-                            RichText(text: TextSpan(text: "Time interval for doses: ",style: TextStyle(color: Colors.grey[700]), children: [
+                            if (data.dosage[index].timeOfRedosingInMinutes > 0.0 && data.dosage[index].timeOfRedosingInMinutes !=null) RichText(text: TextSpan(text: "Time interval for doses: ",style: TextStyle(color: Colors.grey[700]), children: [
                               TextSpan(
                                   text: " every ${data.dosage[index].timeOfRedosingInMinutes / 60.toInt()} hrs",style: TextStyle(color: Colors.black))
 
@@ -83,8 +83,8 @@ class GuidelineList extends StatelessWidget {
                         ),
                         trailing: Column(
                           children: [
-                            Text(
-                                "${data.dosage[index].amount} ${data.dosage[index].suffix}",style: TextStyle(fontWeight: FontWeight.bold),),
+                           for(int i=0; i<data.dosage[index].amount.split("=").length;i++) Text(
+                                "${data.dosage[index].amount.split("=")[i]} ${data.dosage[index].suffix.split("=")[i]}",style: TextStyle(fontWeight: FontWeight.bold),),
                             Text(data.dosage[index].route),
                           ],
                         )),

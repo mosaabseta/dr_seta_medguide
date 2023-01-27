@@ -50,7 +50,7 @@ class SurgeryAntibioticsModel {
 class Dosage {
   final String route;
   final String classification; // adults ex.
-  final double amount;
+  final String amount;
   final String suffix;
   final int timeOfFirstDoseInMinutes;
   final int timeOfRedosingInMinutes;
@@ -77,7 +77,7 @@ class Dosage {
     for (int i = 0; i < list.length; i++) {
       data.add(Dosage(
           classification: list[i]["classification"],
-          amount: (list[i]["amount"].toDouble()),
+          amount: list[i]["amount"],
           firstDosageComment: list[i]["first_dosage_comment"],
           suffix: list[i]["suffix"],
           route: list[i]["route"],
@@ -110,5 +110,24 @@ class Dosage {
       res.add(data);
     }
     return res;
+  }
+  static Map<String,dynamic> toSingelMap(Dosage dosage) {
+
+
+      Map<String,dynamic> data = {
+        "classification": dosage.classification,
+        "amount": dosage.amount,
+        "first_dosage_comment": dosage.firstDosageComment,
+        "suffix": dosage.suffix,
+        "route": dosage.route,
+        "drug":dosage.drug,
+        "line": dosage.line,
+        "comment": dosage.comment,
+        "time_of_redosing_in_minutes": dosage.timeOfRedosingInMinutes,
+        "time_of_first_dose_in_minutes": dosage.timeOfFirstDoseInMinutes
+      };
+
+
+    return data;
   }
 }

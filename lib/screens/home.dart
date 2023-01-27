@@ -81,7 +81,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                       .toList(),
                                   onChanged: (value) async {
                                     fetch.speciality.value = value as String;
+                                    fetch.search.text = "";
                                     setState(() {});
+
                                   },
                                   icon: const Icon(
                                     Icons.arrow_forward_ios_outlined,
