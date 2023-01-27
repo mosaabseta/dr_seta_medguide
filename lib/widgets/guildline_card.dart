@@ -29,7 +29,7 @@ class GuidelineCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Align(
-                            alignment: Alignment.center,
+                            alignment: Alignment.centerLeft,
                             child: Text(data.procedure,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
                         SizedBox(height: 5,),
 

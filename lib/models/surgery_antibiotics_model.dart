@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SurgeryAntibioticsModel {
@@ -15,7 +17,7 @@ class SurgeryAntibioticsModel {
     required this.dosage,
   });
 
-  static SurgeryAntibioticsModel fromSnapshot(Map snapshot) {
+  static SurgeryAntibioticsModel fromSnapshot(Map<String,dynamic> snapshot) {
     List<Dosage> dosage = Dosage.fromSnapshot(snapshot["dosage"]);
 
     SurgeryAntibioticsModel surgeryAntibiotics = SurgeryAntibioticsModel(
@@ -89,10 +91,10 @@ class Dosage {
     return data;
   }
 
-  static List<Map> toMap(List<Dosage> list) {
-    List<Map> res = [];
+  static List<Map<String,dynamic>> toMap(List<Dosage> list) {
+    List<Map<String,dynamic>> res = [];
     for (int i = 0; i < list.length; i++) {
-      Map data = {
+      Map<String,dynamic> data = {
         "classification": list[i].classification,
         "amount": list[i].amount,
         "first_dosage_comment": list[i].firstDosageComment,
