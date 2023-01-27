@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "959111052840",
+    "project_id": "dr-seta-efcc5",
+    "storage_bucket": "dr-seta-efcc5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959111052840:android:ff2f30b86c4c84e058ff1d",
+        "android_client_info": {
+          "package_name": "appinventor.ai_mosaabhmat.dr_seta.dr_seta"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "959111052840-g7urvjrq3auq02kpghiuu27gbb1q7avt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNX9j8agho5Skkf4vdRGRp-1vF99y4Ebs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "959111052840-g7urvjrq3auq02kpghiuu27gbb1q7avt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
