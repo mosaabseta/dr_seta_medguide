@@ -17,57 +17,77 @@ class GuidelineList extends StatelessWidget {
         children: [
           Align(
               alignment: Alignment.centerLeft,
-              child: Text(data.procedure,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),)),
-          SizedBox(height: 5,),
+              child: Text(
+                data.procedure,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              )),
+          SizedBox(
+            height: 5,
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("List of Drugs"),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("List of Drugs"),
+                Text(
+                    "${data.time.toDate().day}/${data.time.toDate().month}/${data.time.toDate().year}")
+              ],
+            ),
           ),
           ListView.builder(
               physics: ScrollPhysics(),
               itemCount: data.dosage.length,
               shrinkWrap: true,
               itemBuilder: (context, index) {
-             return   Card(
-                  child: ListTile(
-
-                      leading: Text
-                        (data.dosage[index].line.toString()),
-                      title: Text("${data.dosage[index].drug} for ${data.dosage[index].classification}"  ),
-                      subtitle:Column(
-                        children: [
-
-                          Row(
-
-                            children: [
-                              Expanded(
-                                child: Text(
-                                    "First time administration within ${data.dosage[index].timeOfFirstDoseInMinutes} mins"),
-                              ),
+                return Card(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 0,vertical: 5),
+                    child: ListTile(
+                        leading: Text(data.dosage[index].line.toString()),
+                        title: Text(
+                            "${data.dosage[index].drug} for ${data.dosage[index].classification}"),
+                        subtitle: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
 
 
-                            ],
-                          ),
-                        if(data.dosage[index].firstDosageComment.isNotEmpty)  Align(
-                              alignment: Alignment.center,
-                              child:  Text("(${data.dosage[index].firstDosageComment})")),
-                          Text("Time interval for doses: every ${data.dosage[index].timeOfRedosingInMinutes/60.toInt()} hrs"),
-                          if(data.dosage[index].comment.isNotEmpty)Align(
-                              alignment: Alignment.center,
-                              child:  Text("Note: ${data.dosage[index].comment}")),
-                          Align(
-                              alignment: Alignment.centerRight,
-                              child: Text("${data.time.toDate().day}/${data.time.toDate().month}/${data.time.toDate().year}"))
+
+                                  RichText(text: TextSpan(text: "First time administration ",style: TextStyle(color: Colors.grey[700]), children: [
+                                    TextSpan(
+                                        text: "within ${data.dosage[index].timeOfFirstDoseInMinutes} mins",style: TextStyle(color: Colors.black))
+
+                                  ]),
 
 
-                        ],
-                      ) ,
-                      trailing:Column(
-                        children: [
-                          Text("${data.dosage[index].amount} ${data.dosage[index].suffix}"),
-                          Text(data.dosage[index].route),
-                        ],
-                      )
+                            ),
+                            if (data.dosage[index].firstDosageComment.isNotEmpty)
+                              RichText(text: TextSpan(text: "Note: ",style: TextStyle(color: Colors.grey[700]), children: [
+                                TextSpan(
+                                    text: " ${data.dosage[index].firstDosageComment}",style: TextStyle(color: Colors.black))
+
+                              ])),
+                            RichText(text: TextSpan(text: "Time interval for doses: ",style: TextStyle(color: Colors.grey[700]), children: [
+                              TextSpan(
+                                  text: " every ${data.dosage[index].timeOfRedosingInMinutes / 60.toInt()} hrs",style: TextStyle(color: Colors.black))
+
+                            ])),
+                            if (data.dosage[index].comment.isNotEmpty)
+                              RichText(text: TextSpan(text:  "Note: ",style: TextStyle(color: Colors.grey[700]), children: [
+                                TextSpan(
+                                    text: "${data.dosage[index].comment}",style: TextStyle(color: Colors.black))
+
+                              ])),
+
+                          ],
+                        ),
+                        trailing: Column(
+                          children: [
+                            Text(
+                                "${data.dosage[index].amount} ${data.dosage[index].suffix}",style: TextStyle(fontWeight: FontWeight.bold),),
+                            Text(data.dosage[index].route),
+                          ],
+                        )),
                   ),
                 );
               }),
