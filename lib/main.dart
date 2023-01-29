@@ -1,16 +1,11 @@
 import 'package:dr_seta/controllers/controller.dart';
 import 'package:dr_seta/helpers/constants.dart';
-import 'package:dr_seta/models/general_data_model.dart';
-import 'package:dr_seta/models/surgery_antibiotics_model.dart';
 import 'package:dr_seta/screens/founders.dart';
 import 'package:dr_seta/screens/home.dart';
 import 'package:dr_seta/screens/new_guidline.dart';
-import 'package:dr_seta/widgets/guildline_card.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 import 'firebase_options.dart';
 
@@ -62,12 +57,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => NewGuideline()));
-        },
-      ),
       appBar: AppBar(
         backgroundColor: Colors.indigoAccent,
         title: GetX<Controller>(
@@ -87,21 +76,19 @@ class _MyHomePageState extends State<MyHomePage> {
                           } else {
                             fetch.viewType.value = 1;
                           }
-                          setState(() {
-
-                          });
+                          setState(() {});
                         },
                         icon: fetch.viewType.value == 1
-                            ? Icon(Icons.credit_card_outlined)
-                            : Icon(Icons.list)),
-                    IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Founders()));
-                        },
-                        icon: Icon(Icons.info_rounded)),
+                            ? const Icon(Icons.credit_card_outlined)
+                            : const Icon(Icons.list)),
+                    // IconButton(
+                    //     onPressed: () {
+                    //       Navigator.push(
+                    //           context,
+                    //           MaterialPageRoute(
+                    //               builder: (context) => const Founders()));
+                    //     },
+                    //     icon: const Icon(Icons.info_rounded)),
                   ],
                 )
               ],
@@ -109,7 +96,15 @@ class _MyHomePageState extends State<MyHomePage> {
           },
         ),
       ),
-      body: HomeScreen(),
+      body: const HomeScreen(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.indigoAccent,
+        child: const Icon(Icons.add),
+        onPressed: () async {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const NewGuideline()));
+        },
+      ),
     );
   }
 }

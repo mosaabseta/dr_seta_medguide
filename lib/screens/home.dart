@@ -66,23 +66,22 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   items: snapshot.data!.speciality
                                       .map((item) => DropdownMenuItem<String>(
-                                    value: item,
-                                    child: Text(
-                                      item,
-                                      style: const TextStyle(
-                                        fontSize: 14,
-                                        // fontWeight: FontWeight.bold,
-                                        // color: Colors.white,
-                                      ),
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  ))
+                                            value: item,
+                                            child: Text(
+                                              item,
+                                              style: const TextStyle(
+                                                fontSize: 14,
+                                                // fontWeight: FontWeight.bold,
+                                                // color: Colors.white,
+                                              ),
+                                              overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ))
                                       .toList(),
                                   onChanged: (value) async {
                                     fetch.speciality.value = value as String;
                                     fetch.search.text = "";
                                     setState(() {});
-
                                   },
                                   icon: const Icon(
                                     Icons.arrow_forward_ios_outlined,
@@ -90,7 +89,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   iconSize: 14,
                                   buttonHeight: 40,
                                   buttonWidth:
-                                  MediaQuery.of(context).size.width * 6,
+                                      MediaQuery.of(context).size.width * 6,
                                   buttonPadding: const EdgeInsets.only(
                                       left: 14, right: 14),
                                   buttonDecoration: BoxDecoration(
@@ -123,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
               child: TextFormField(
                 controller: fetch.search,
                 textAlignVertical: TextAlignVertical.center,
@@ -131,7 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 decoration: const InputDecoration(
                   hintText: 'Search',
                   labelText: 'Search',
-                  enabledBorder: InputBorder.none,
+                  // enabledBorder: InputBorder.none,
                   focusedBorder: InputBorder.none,
                 ),
               ),
@@ -155,14 +154,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         return snapshot.data!.isEmpty
                             ? Center(child: Text("no data available"))
                             : ListView.builder(
-                             physics: ScrollPhysics(),
-                             shrinkWrap: true,
-                            itemCount: snapshot.data!.length,
-                            itemBuilder: (context, index) {
-                              return fetch.viewType.value==1? GuidelineCard(
-                                  data: snapshot.data![index]):GuidelineList(
-                                  data: snapshot.data![index]);
-                            });
+                                physics: ScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: snapshot.data!.length,
+                                itemBuilder: (context, index) {
+                                  return fetch.viewType.value == 1
+                                      ? GuidelineCard(
+                                          data: snapshot.data![index])
+                                      : GuidelineList(
+                                          data: snapshot.data![index]);
+                                });
                     }
                   }),
             ),
