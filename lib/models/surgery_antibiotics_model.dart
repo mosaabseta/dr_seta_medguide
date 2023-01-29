@@ -8,9 +8,11 @@ class SurgeryAntibioticsModel {
   final String dicipline; //
   final Timestamp time;
   final List<Dosage> dosage;
+  final String prophylaxisDuration;
 
   SurgeryAntibioticsModel({
     required this.time,
+    required this.prophylaxisDuration,
     required this.speciality,
     required this.procedure,
     required this.dicipline,
@@ -23,6 +25,7 @@ class SurgeryAntibioticsModel {
     SurgeryAntibioticsModel surgeryAntibiotics = SurgeryAntibioticsModel(
       speciality: snapshot["speciality"],
       procedure: snapshot["procedure"],
+      prophylaxisDuration: snapshot["duration"],
       time: snapshot["time"],
       dicipline: snapshot["dicipline"],
       dosage: dosage,

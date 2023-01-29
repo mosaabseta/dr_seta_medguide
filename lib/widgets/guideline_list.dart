@@ -24,6 +24,20 @@ class GuidelineList extends StatelessWidget {
           SizedBox(
             height: 5,
           ),
+          Align(
+              alignment: Alignment.centerLeft,
+              child: RichText(text: TextSpan(text: "Duration: ",style: TextStyle(color: Colors.grey[700]), children: [
+                TextSpan(
+                    text: data.prophylaxisDuration,style: TextStyle(color: Colors.black))
+
+              ]),
+
+
+              ),
+            ),
+          SizedBox(
+            height: 5,
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
