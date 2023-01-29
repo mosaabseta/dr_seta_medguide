@@ -1,9 +1,5 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
-
-import '../controllers/controller.dart';
 import '../helpers/constants.dart';
 import '../models/general_data_model.dart';
 
@@ -20,7 +16,7 @@ class _NewGuidelineState extends State<NewGuideline> {
     return Scaffold(
       body: ListView(
         shrinkWrap: true,
-        physics: ScrollPhysics(),
+        physics: const ScrollPhysics(),
         children: [
           Padding(
             padding: const EdgeInsets.all(5.0),
@@ -150,7 +146,7 @@ class _NewGuidelineState extends State<NewGuideline> {
                           children: [
                             Text(
                                 "${controller.listOfDosage[index].amount} ${controller.listOfDosage[index].suffix}"),
-                             Text(controller.listOfDosage[index].route),
+                            Text(controller.listOfDosage[index].route),
                           ],
                         )),
                   );
@@ -479,11 +475,9 @@ class _NewGuidelineState extends State<NewGuideline> {
               ),
             ),
           ),
-
           TextButton(
               onPressed: () {
-               //controller.save();
-
+                //controller.save();
               },
               child: const Text("Save New Guideline"))
         ],
