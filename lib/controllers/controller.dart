@@ -30,7 +30,7 @@ class Controller extends GetxController {
   ScrollPhysics scrollPhysics = ScrollPhysics();
   List<Map<String, dynamic>> dosageList = [];
   List<Dosage> listOfDosage = [];
-  RxInt viewType = 1.obs;
+  RxInt viewType = 2.obs;
 
   @override
   void onInit() {
