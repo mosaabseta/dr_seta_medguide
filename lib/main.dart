@@ -58,16 +58,32 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.indigoAccent,
-        title: GetX<Controller>(
-          init: controller,
-          // initState: (_) async{},
-          builder: (fetch) {
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(widget.title),
-                Row(
+          elevation: 0,
+          backgroundColor: Colors.indigoAccent,
+          title: Text(widget.title),
+          leading: IconButton(
+            onPressed: () {
+              TextFormField(
+                // controller: fetch.search,
+                textAlignVertical: TextAlignVertical.center,
+                onChanged: (_) => setState(() {}),
+                decoration: const InputDecoration(
+                  hintText: 'Search',
+                  labelText: 'Search',
+                  // enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
+                ),
+              );
+            },
+            icon: const Icon(Icons.search_rounded),
+          ),
+          actions: [
+            GetX<Controller>(
+              init: controller,
+              // initState: (_) async{},
+              builder: (fetch) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
                         onPressed: () {
@@ -90,12 +106,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     //     },
                     //     icon: const Icon(Icons.info_rounded)),
                   ],
-                )
-              ],
-            );
-          },
-        ),
-      ),
+                );
+              },
+            ),
+          ]),
       body: const HomeScreen(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.indigoAccent,
