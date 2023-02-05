@@ -1,6 +1,5 @@
 import 'package:dr_seta/controllers/controller.dart';
 import 'package:dr_seta/helpers/constants.dart';
-import 'package:dr_seta/screens/founders.dart';
 import 'package:dr_seta/screens/home.dart';
 import 'package:dr_seta/screens/new_guidline.dart';
 import 'package:firebase_core/firebase_core.dart';
