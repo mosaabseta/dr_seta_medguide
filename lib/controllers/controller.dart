@@ -9,13 +9,17 @@ import '../models/surgery_antibiotics_model.dart';
 class Controller extends GetxController {
   static Controller instance = Get.find();
   Rx<List<SurgeryAntibioticsModel>> antibioticsSnapshot =
-      Rx<List<SurgeryAntibioticsModel>>([]);
+  Rx<List<SurgeryAntibioticsModel>>([]);
 
   List<SurgeryAntibioticsModel> get surgeryAntibiotics =>
       antibioticsSnapshot.value;
   RxString speciality = "Cardiac".obs;
+  RxString age = "Adult".obs;
+  List ages = ["Adult", "Paediatrics"];
   RxString dosageClassification = "".obs;
   RxString line = "".obs;
+  RxString filterLine ="1st line".obs;
+  List linesList =["1st line","2nd line","3rd line","4th line"];
   TextEditingController search = TextEditingController();
   TextEditingController procedure = TextEditingController();
   TextEditingController drug = TextEditingController();
@@ -30,7 +34,13 @@ class Controller extends GetxController {
   ScrollPhysics scrollPhysics = ScrollPhysics();
   List<Map<String, dynamic>> dosageList = [];
   List<Dosage> listOfDosage = [];
-  RxInt viewType = 2.obs;
+  RxInt viewType = 1.obs;
+  List<Map> authors =[
+    {"Name":"MOSAAB MOHAMMED ABDALLAH AGROF","Title":""},
+    {"Name":"MOSAAB MOHAMMED ABDALLAH AGROF"},
+    {"Name":"MOSAAB MOHAMMED ABDALLAH AGROF"}
+  ];
+  List<Map> developers =[];
 
   @override
   void onInit() {
@@ -53,15 +63,16 @@ class Controller extends GetxController {
       "line": line.value,
       "comment": dosageNote.text,
       "time_of_redosing_in_minutes":
-          (int.parse(dosageIntervalInHours.text) * 60),
+      (int.parse(dosageIntervalInHours.text) * 60),
       "time_of_first_dose_in_minutes": int.parse(firstDosageInMinutes.text)
     };
     dosageList.add(dosageData);
     listOfDosage = Dosage.fromSnapshot(dosageList);
   }
+
   removeDosage(Dosage dosageDataForRemove) async {
-    Map<String,dynamic> data = Dosage.toSingelMap(dosageDataForRemove);
-print(data);
+    Map<String, dynamic> data = Dosage.toSingelMap(dosageDataForRemove);
+    print(data);
     dosageList.remove(data);
 
     listOfDosage = Dosage.fromSnapshot(dosageList);
@@ -70,7 +81,7 @@ print(data);
   save() async {
     try {
       List<Map<String, dynamic>> data =
-          SurgeryAntibioticsModel.toMap(surgeryAntibiotics);
+      SurgeryAntibioticsModel.toMap(surgeryAntibiotics);
       Map<String, dynamic> newGuideline = {
         "speciality": speciality.value,
         "procedure": procedure.text,
@@ -89,17 +100,32 @@ print(data);
     }
   }
 
+
+
+Future<List<Dosage>> filterCard(List<Dosage> data) async {
+  List<Dosage> res = [];
+
+    res = data
+        .where((element)
+
+
+     => element.classification.toLowerCase() == age.value.toLowerCase() &&
+            element.line == filterLine.value)
+        .toList();
+
+  return res;
+}
   Future<List<SurgeryAntibioticsModel>> filterGuidlines(
       List<SurgeryAntibioticsModel> data) async {
     List<SurgeryAntibioticsModel> res = [];
     if (search.text.isEmpty) {
       res = data
-          .where((element) => element.speciality == speciality.value)
+          .where((element) => element.speciality.toLowerCase() == speciality.value.toLowerCase())
           .toList();
     } else {
       res = data
           .where((element) =>
-              element.speciality == speciality.value &&
+              element.speciality.toLowerCase() == speciality.value.toLowerCase() &&
               element.procedure
                   .toUpperCase()
                   .contains(search.text.toUpperCase()))

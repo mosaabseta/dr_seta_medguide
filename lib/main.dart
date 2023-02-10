@@ -1,5 +1,6 @@
 import 'package:dr_seta/controllers/controller.dart';
 import 'package:dr_seta/helpers/constants.dart';
+import 'package:dr_seta/screens/founders.dart';
 import 'package:dr_seta/screens/home.dart';
 import 'package:dr_seta/screens/new_guidline.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -25,20 +26,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Med Guide',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Med Guide'),
+      title: 'MED GUIDE',
+      theme: ThemeData(fontFamily: "Ubuntu", primarySwatch: Colors.blue,),
+      home: const MyHomePage(title: 'MED GUIDE'),
     );
   }
 }
@@ -59,7 +49,11 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.indigoAccent,
-          title: Text(widget.title),
+          title: Row(
+            children: [
+              Text(widget.title),
+            ],
+          ),
           actions: [
             GetX<Controller>(
               init: controller,
@@ -75,33 +69,33 @@ class _MyHomePageState extends State<MyHomePage> {
                           } else {
                             fetch.viewType.value = 1;
                           }
-                          setState(() {});
+
                         },
                         icon: fetch.viewType.value == 1
                             ? const Icon(Icons.credit_card_outlined)
                             : const Icon(Icons.list)),
-                    // IconButton(
-                    //     onPressed: () {
-                    //       Navigator.push(
-                    //           context,
-                    //           MaterialPageRoute(
-                    //               builder: (context) => const Founders()));
-                    //     },
-                    //     icon: const Icon(Icons.info_rounded)),
+                    IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Founders()));
+                        },
+                        icon: const Icon(Icons.info_rounded)),
                   ],
                 );
               },
             ),
           ]),
       body: const HomeScreen(),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.indigoAccent,
-        child: const Icon(Icons.add),
-        onPressed: () async {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const NewGuideline()));
-        },
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   backgroundColor: Colors.indigoAccent,
+      //   child: const Icon(Icons.add),
+      //   onPressed: () async {
+      //     Navigator.push(context,
+      //         MaterialPageRoute(builder: (context) => const NewGuideline()));
+      //   },
+      // ),
     );
   }
 }

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="appinventor.ai_mosaabhmat.dr_seta.dr_seta">
    <application
-        android:label="dr_seta"
+        android:label="MED-GUIDE"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
