@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dr_seta/helpers/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../models/general_data_model.dart';
 import '../models/surgery_antibiotics_model.dart';
@@ -50,6 +51,14 @@ class Controller extends GetxController {
 
   getAntibiotics() async {
     antibioticsSnapshot.bindStream(antibioticsService.getData());
+  }
+
+  open()async{
+    final Uri emailLaunchUri = Uri.parse(
+      'https://edhub.sd/antibiotic.pdf',
+    );
+
+    launchUrl(emailLaunchUri);
   }
 
   addDosage() async {

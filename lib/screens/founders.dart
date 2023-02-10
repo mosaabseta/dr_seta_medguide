@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../helpers/constants.dart';
@@ -12,6 +13,7 @@ class Founders extends StatefulWidget {
 }
 
 class _FoundersState extends State<Founders> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,13 +24,25 @@ class _FoundersState extends State<Founders> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Text(
-              """App contents are based on an audit project under the title 
-Preoperative Antibiotic uses in Soba University Hospital
-                 """,
-              style: TextStyle(fontSize: 14),
-              textAlign: TextAlign.justify,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RichText(
+                  text: TextSpan(
+
+                      text:
+                          "App contents are based on an audit project under the title",
+                      children: [
+                    TextSpan(
+                        text:
+                            " Clinical Audit: Perioperative antibiotic use in Surgical procedures in Soba teaching hospital ",
+                    style: TextStyle(fontSize: 16,color: Colors.black,fontWeight:FontWeight.bold), ),
+                        TextSpan(text: " Open Abstract",recognizer: TapGestureRecognizer()..onTap = () =>controller. open(), style: TextStyle(fontSize: 16,color: Colors.blue,fontWeight:FontWeight.bold),
+              )
+                  ], style: TextStyle(fontSize: 14,color: Colors.black),
+                   ),textAlign:TextAlign.justify),
+
             ),
+            SizedBox(height: 10,),
             ListTile(
               title: Text("Authors",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
@@ -46,17 +60,21 @@ Preoperative Antibiotic uses in Soba University Hospital
                         return Column(
                           children: [
                             ...List.generate(
-                                snapshot.data!.authors.length, (index) => ListTile(
-                              title: Text(snapshot.data!.authors[index]["name"]),
-                              subtitle: Text(snapshot.data!.authors[index]["title"]),
-                              trailing: Text(snapshot.data!.authors[index]["part"]),
-                            ))
+                                snapshot.data!.authors.length,
+                                (index) => ListTile(
+                                      title: Text(snapshot.data!.authors[index]
+                                          ["name"]),
+                                      subtitle: Text(snapshot
+                                          .data!.authors[index]["title"]),
+                                      trailing: Text(snapshot
+                                          .data!.authors[index]["part"]),
+                                    ))
                           ],
                         );
                     }
                   }),
-            )
-            , ListTile(
+            ),
+            ListTile(
               title: Text("Developers",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               subtitle: FutureBuilder<GeneralDataModel>(
@@ -73,17 +91,19 @@ Preoperative Antibiotic uses in Soba University Hospital
                         return Column(
                           children: [
                             ...List.generate(
-                                snapshot.data!.developers.length, (index) => ListTile(
-                              title: Text(snapshot.data!.developers[index]["name"]),
-                              subtitle: Text(snapshot.data!.developers[index]["title"]),
-
-                            ))
+                                snapshot.data!.developers.length,
+                                (index) => ListTile(
+                                      title: Text(snapshot
+                                          .data!.developers[index]["name"]),
+                                      subtitle: Text(snapshot
+                                          .data!.developers[index]["title"]),
+                                    ))
                           ],
                         );
                     }
                   }),
-            )
-            ,  ListTile(
+            ),
+            ListTile(
               title: Text("Acknowledgements",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               subtitle: FutureBuilder<GeneralDataModel>(
@@ -100,16 +120,18 @@ Preoperative Antibiotic uses in Soba University Hospital
                         return Column(
                           children: [
                             ...List.generate(
-                                snapshot.data!.acknowledgement.length, (index) => ListTile(
-                              title: Text(snapshot.data!.acknowledgement[index]["name"]),
-                              subtitle: Text(snapshot.data!.acknowledgement[index]["part"]),
-                               ))
+                                snapshot.data!.acknowledgement.length,
+                                (index) => ListTile(
+                                      title: Text(snapshot.data!
+                                          .acknowledgement[index]["name"]),
+                                      subtitle: Text(snapshot.data!
+                                          .acknowledgement[index]["part"]),
+                                    ))
                           ],
                         );
                     }
                   }),
-            )
-            ,
+            ),
           ],
         ),
       ),
