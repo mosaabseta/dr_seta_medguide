@@ -154,13 +154,16 @@ class GuidelineCard extends StatelessWidget {
                                         ),
                                       ),
                                     ),),
-
-                                    Text(
-                                        "${snapshot.data![index].amount} ${snapshot.data![index].suffix}",
+                                  Column(children: [
+                                    for (int i = 0;
+                                    i <snapshot.data![index].amount.split("=").length;
+                                    i++)Text(
+                                        "${snapshot.data![index].amount.split("=")[i]} ${snapshot.data![index].suffix.split("=")[i]}",
                                         style: const TextStyle(
                                             fontSize: 18,
                                             color: Colors.white,
-                                            fontWeight: FontWeight.normal)),
+                                            fontWeight: FontWeight.normal))
+                                  ],)
                                   ],
                                 ),
                               ),

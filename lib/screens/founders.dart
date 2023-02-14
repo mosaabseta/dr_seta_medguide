@@ -63,7 +63,7 @@ class _FoundersState extends State<Founders> {
                                 snapshot.data!.authors.length,
                                 (index) => ListTile(
                                       title: Text(snapshot.data!.authors[index]
-                                          ["name"]),
+                                          ["name"].toUpperCase()),
                                       subtitle: Text(snapshot
                                           .data!.authors[index]["title"]),
                                       trailing: Text(snapshot
@@ -94,7 +94,7 @@ class _FoundersState extends State<Founders> {
                                 snapshot.data!.developers.length,
                                 (index) => ListTile(
                                       title: Text(snapshot
-                                          .data!.developers[index]["name"]),
+                                          .data!.developers[index]["name"].toUpperCase()),
                                       subtitle: Text(snapshot
                                           .data!.developers[index]["title"]),
                                     ))
@@ -123,7 +123,7 @@ class _FoundersState extends State<Founders> {
                                 snapshot.data!.acknowledgement.length,
                                 (index) => ListTile(
                                       title: Text(snapshot.data!
-                                          .acknowledgement[index]["name"]),
+                                          .acknowledgement[index]["name"].toUpperCase()),
                                       subtitle: Text(snapshot.data!
                                           .acknowledgement[index]["part"]),
                                     ))
