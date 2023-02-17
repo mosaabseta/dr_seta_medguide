@@ -29,6 +29,49 @@
             {
               "client_id": "959111052840-g7urvjrq3auq02kpghiuu27gbb1q7avt.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "959111052840-siblc3ko33jufa9gnj8q9auvbdr6ir46.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "appinventor.aimosaabhmat.drseta.drSeta"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959111052840:android:9d923fe20adcbd5e58ff1d",
+        "android_client_info": {
+          "package_name": "bio.seta.medguide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "959111052840-g7urvjrq3auq02kpghiuu27gbb1q7avt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNX9j8agho5Skkf4vdRGRp-1vF99y4Ebs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "959111052840-g7urvjrq3auq02kpghiuu27gbb1q7avt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "959111052840-siblc3ko33jufa9gnj8q9auvbdr6ir46.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "appinventor.aimosaabhmat.drseta.drSeta"
+              }
             }
           ]
         }
