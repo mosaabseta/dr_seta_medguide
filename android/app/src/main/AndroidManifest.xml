@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="appinventor.ai_mosaabhmat.dr_seta.dr_seta">
+    package="bio.seta.medguide">
    <application
         android:label="MED-GUIDE"
         android:name="${applicationName}"

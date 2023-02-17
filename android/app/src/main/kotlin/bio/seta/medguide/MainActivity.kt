@@ -1,4 +1,4 @@
-package appinventor.ai_mosaabhmat.dr_seta.dr_seta
+package bio.seta.medguide
 
 import io.flutter.embedding.android.FlutterActivity
 

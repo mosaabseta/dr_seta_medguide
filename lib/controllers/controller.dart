@@ -55,7 +55,7 @@ class Controller extends GetxController {
 
   open()async{
     final Uri emailLaunchUri = Uri.parse(
-      'https://edhub.sd/antibiotic.pdf',
+      'https://edhub.sd/antibiotics.html',
     );
 
     launchUrl(emailLaunchUri);
