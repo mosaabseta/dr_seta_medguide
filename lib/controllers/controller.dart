@@ -35,7 +35,7 @@ class Controller extends GetxController {
   ScrollPhysics scrollPhysics = ScrollPhysics();
   List<Map<String, dynamic>> dosageList = [];
   List<Dosage> listOfDosage = [];
-  RxInt viewType = 1.obs;
+  RxInt viewType = 0.obs;
   List<Map> authors =[
     {"Name":"MOSAAB MOHAMMED ABDALLAH AGROF","Title":""},
     {"Name":"MOSAAB MOHAMMED ABDALLAH AGROF"},

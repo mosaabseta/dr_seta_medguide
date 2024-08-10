@@ -47,16 +47,16 @@ dependencies:
 flutter_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/medguide.png"
+  image_path: "assets/medguide.jpg"
   min_sdk_android: 21 # android min sdk min:16, default 21
   web:
     generate: true
-    image_path: "path/to/image.png"
+    image_path: "assets/medguide.jpg"
     background_color: "#hexcode"
     theme_color: "#hexcode"
   windows:
     generate: true
-    image_path: "path/to/image.png"
+    image_path: "assets/medguide.jpg"
     icon_size: 48 # min:48, max:256, default: 48
 
 
